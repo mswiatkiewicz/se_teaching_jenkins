@@ -10,12 +10,13 @@ test:
         stage: test
         script:
                 - make deps
-                - make test_cov
+                - make test_xunit
 docker:
         image: docker:stable
         services:
                 - docker:dind
         stage: docker_build
         script:
-                - make docker build
+                - spk add --update make
+                - make docker_build
 
